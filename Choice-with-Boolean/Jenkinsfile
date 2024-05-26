@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+
+    parameters{
+        booleanParam(defaultValue: false, description: "choose one option of Environment", name: "deployEnv")
+        choice(choices:["TEST", "PROD", "DEV", "RELEASE"], description: "which AZ ?", name: "AZ-Deploy")
+    }
+    stages{
+        stage("Demo"){
+            steps{
+                echo "String is set to: ${params.deployEnv}"
+            }
+        }
+    }
+}
